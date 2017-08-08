@@ -27,9 +27,33 @@ describe Oystercard do
   it 'deducts fare amount from balance' do
     oystercard.top_up(50)
     old_bal = oystercard.balance
-    oystercard.deduct(2)
-    new_bal = oystercard.balance
-    expect(new_bal).to eq(old_bal - 2)
+    oystercard.deduct
+    expect(oystercard.balance).to eq(old_bal - 2)
+  end
+
+  it 'returns Beep when touching in' do
+    expect(oystercard.touch_in).to eq "Beep"
+  end
+
+  it 'recognises when it is in the midst of a voyage' do
+    oystercard.touch_in
+    expect(oystercard.in_journey?).to eq true
+  end
+
+  it "won't letcha touch in again if you're in journey" do
+    oystercard.touch_in
+    expect { oystercard.touch_in }.to raise_error "Fuck"
+  end
+
+  it "will let you touch out if you have touched in and runs deduct" do
+    oystercard.top_up(50)
+    old_bal = oystercard.balance
+    oystercard.touch_out
+    expect(oystercard.balance).to eq(old_bal - 2)
+  end
+
+  it "returns 'boop' when touching out" do
+    expect(oystercard.touch_out).to eq "Boop"
   end
 
 end

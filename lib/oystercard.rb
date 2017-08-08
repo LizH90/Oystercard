@@ -1,10 +1,15 @@
 class Oystercard
 
   MAX_BAL = 90
+  FARE = 2
+  PENALTY_FARE = 10
   attr_reader :balance
 
   def initialize
     @balance = 0
+    @status = false
+    @fare = FARE
+    @penalty_fare = PENALTY_FARE
   end
 
   def top_up(amount)
@@ -12,12 +17,28 @@ class Oystercard
     @balance += amount
   end
 
+  def touch_in
+    raise "Fuck" if in_journey?
+    @status = true
+    "Beep"
+  end
+
+  def touch_out
+    @status = false
+    deduct
+    "Boop"
+  end
+
+  def in_journey?
+    @status
+  end
+
   def max?(amt)
     @balance + amt > MAX_BAL
   end
 
-  def deduct(fare)
-    @balance -= fare
+  def deduct
+    @balance -= @fare
   end
 
   private :max?
