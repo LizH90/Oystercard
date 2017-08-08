@@ -24,13 +24,6 @@ describe Oystercard do
     expect { oystercard.top_up(91) }.to raise_error "Balance cannot exceed £90"
   end
 
-  it 'deducts fare amount from balance' do
-    oystercard.top_up(50)
-    old_bal = oystercard.balance
-    oystercard.deduct
-    expect(oystercard.balance).to eq(old_bal - 2)
-  end
-
   it 'returns Beep when touching in' do
     oystercard.top_up(10)
     expect(oystercard.touch_in).to eq "Beep"
@@ -50,9 +43,7 @@ describe Oystercard do
 
   it "will let you touch out if you have touched in and runs deduct" do
     oystercard.top_up(50)
-    old_bal = oystercard.balance
-    oystercard.touch_out
-    expect(oystercard.balance).to eq(old_bal - 2)
+    expect { oystercard.touch_out }.to change { oystercard.balance }.by(-2)
   end
 
   it "returns 'boop' when touching out" do

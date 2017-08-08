@@ -42,6 +42,6 @@ class Oystercard
     @balance -= @fare
   end
 
-  private :max?
+  private :max?, :deduct
 
 end
