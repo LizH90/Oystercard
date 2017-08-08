@@ -1,7 +1,6 @@
 require 'oystercard'
 
 describe Oystercard do
-
   let(:oystercard) { described_class.new }
 
   it 'initializes with a zero balance' do
@@ -15,6 +14,14 @@ describe Oystercard do
   it 'registers a ten pound topup in the balance' do
     oystercard.top_up(10)
     expect(oystercard.balance).to eq 10
+  end
+
+  it 'limits the amount of balance on the card to £90a' do
+    expect { oystercard.top_up(90) }.not_to raise_error
+  end
+
+  it 'limits the amount of balance on the card to £91' do
+    expect { oystercard.top_up(91) }.to raise_error "Balance cannot exceed £90"
   end
 
 end
