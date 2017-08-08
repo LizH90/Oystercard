@@ -16,6 +16,10 @@ class Oystercard
     @balance + amt > MAX_BAL
   end
 
+  def deduct(fare)
+    @balance -= fare
+  end
+
   private :max?
 
 end
