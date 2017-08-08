@@ -5,7 +5,7 @@ p oystercard.balance
 
 oystercard.top_up(10)
 p oystercard.balance
-# expect 10
+# expect £10
 
 oystercard.top_up(100)
 # expect runtime error
