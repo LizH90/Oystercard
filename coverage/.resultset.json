@@ -1,11 +1,11 @@
 {
   "RSpec": {
     "coverage": {
-      "/Users/will/Projects/MA-COURSE/week2/oystercard_challenge/spec/oystercard_spec.rb": [
+      "/Users/lizziehard/challenges/week_2/oystercard_challenge/spec/oystercard_spec.rb": [
         1,
         null,
         1,
-        12,
+        13,
         null,
         1,
         1,
@@ -37,13 +37,16 @@
         null,
         1,
         1,
+        1,
         null,
         null,
         1,
         1,
         1,
+        1,
         null,
         null,
+        1,
         1,
         1,
         2,
@@ -58,11 +61,15 @@
         null,
         1,
         1,
+        null,
+        null,
+        1,
+        2,
         null,
         null,
         null
       ],
-      "/Users/will/Projects/MA-COURSE/week2/oystercard_challenge/lib/oystercard.rb": [
+      "/Users/lizziehard/challenges/week_2/oystercard_challenge/lib/oystercard.rb": [
         1,
         null,
         1,
@@ -71,18 +78,19 @@
         1,
         null,
         1,
-        11,
-        11,
-        11,
-        11,
+        12,
+        12,
+        12,
+        12,
+        null,
+        null,
+        1,
+        8,
+        7,
         null,
         null,
         1,
         5,
-        4,
-        null,
-        null,
-        1,
         4,
         3,
         3,
@@ -95,11 +103,11 @@
         null,
         null,
         1,
-        5,
+        6,
         null,
         null,
         1,
-        5,
+        8,
         null,
         null,
         1,
@@ -111,6 +119,6 @@
         null
       ]
     },
-    "timestamp": 1502203836
+    "timestamp": 1502205205
   }
 }

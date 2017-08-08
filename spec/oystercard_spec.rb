@@ -32,15 +32,18 @@ describe Oystercard do
   end
 
   it 'returns Beep when touching in' do
+    oystercard.top_up(10)
     expect(oystercard.touch_in).to eq "Beep"
   end
 
   it 'recognises when it is in the midst of a voyage' do
+    oystercard.top_up(10)
     oystercard.touch_in
     expect(oystercard.in_journey?).to eq true
   end
 
   it "won't letcha touch in again if you're in journey" do
+    oystercard.top_up(10)
     oystercard.touch_in
     expect { oystercard.touch_in }.to raise_error "Fuck"
   end
@@ -54,6 +57,10 @@ describe Oystercard do
 
   it "returns 'boop' when touching out" do
     expect(oystercard.touch_out).to eq "Boop"
+  end
+
+  it 'returns error if balance < £1' do
+    expect { oystercard.touch_in }.to raise_error "FUCK OFF"
   end
 
 end

@@ -10,18 +10,18 @@ p oystercard.balance
 # oystercard.top_up(100)
 # expect runtime error
 
-oystercard.deduct(2)
+oystercard.deduct
 p oystercard.balance
 ########################
-oystercard.touch_in
+p oystercard.in_journey?
+
 p oystercard.touch_in
 # expect "Beep"
 
-oystercard.in_journey?
 p oystercard.in_journey?
 # expect true
 
-oystercard.touch_in
+# oystercard.touch_in
 # expect error
 
 oystercard.touch_out
@@ -31,6 +31,10 @@ p oystercard.touch_out
 oystercard.touch_out
 # want to deduct fare
 
-oystercard.in_journey
-p oystercard.in_journey
+oystercard.in_journey?
+p oystercard.in_journey?
 # expect false
+
+oystercard2 = Oystercard.new
+p oystercard2.touch_in
+# expect FUCK OFF

@@ -3,7 +3,7 @@ class Oystercard
   MAX_BAL = 90
   FARE = 2
   PENALTY_FARE = 10
-  attr_reader :balance
+  attr_reader :balance, :status
 
   def initialize
     @balance = 0
@@ -19,6 +19,7 @@ class Oystercard
 
   def touch_in
     raise "Fuck" if in_journey?
+    raise "FUCK OFF" if @balance < 1
     @status = true
     "Beep"
   end
