@@ -15,13 +15,13 @@ p oystercard.balance
 ########################
 p oystercard.in_journey?
 
-p oystercard.touch_in
+p oystercard.touch_in("Makers Station")
 # expect "Beep"
 
 p oystercard.in_journey?
 # expect true
 
-# oystercard.touch_in
+# oystercard.touch_in("Makers Station")
 # expect error
 
 oystercard.touch_out

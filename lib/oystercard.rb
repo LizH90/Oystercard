@@ -3,13 +3,13 @@ class Oystercard
   MAX_BAL = 90
   FARE = 2
   PENALTY_FARE = 10
-  attr_reader :balance, :status
+  attr_reader :balance, :status, :entry_station
 
   def initialize
     @balance = 0
-    @status = false
     @fare = FARE
     @penalty_fare = PENALTY_FARE
+    @entry_station = nil
   end
 
   def top_up(amount)
@@ -17,21 +17,21 @@ class Oystercard
     @balance += amount
   end
 
-  def touch_in
+  def touch_in(stn)
     raise "Fuck" if in_journey?
     raise "FUCK OFF" if @balance < 1
-    @status = true
+    @entry_station = stn
     "Beep"
   end
 
   def touch_out
-    @status = false
+    @entry_station = nil
     deduct
     "Boop"
   end
 
   def in_journey?
-    @status
+    !!@entry_station
   end
 
   def max?(amt)
