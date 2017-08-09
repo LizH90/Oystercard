@@ -60,7 +60,7 @@ describe Oystercard do
   end
 
   it 'initliazes with empty array' do
-    expect (oystercard.history).to eq []
+    expect(oystercard.history).to eq []
   end
 
   it 'will store and entry station as a hash'  do

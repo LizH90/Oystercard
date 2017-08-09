@@ -10,10 +10,10 @@ p oystercard.balance
 # oystercard.top_up(100)
 # expect runtime error
 
-oystercard.deduct
-p oystercard.balance
-########################
-p oystercard.in_journey?
+# oystercard.deduct
+# p oystercard.balance
+# ########################
+# p oystercard.in_journey?
 
 p oystercard.touch_in("Makers Station")
 # expect "Beep"
@@ -24,17 +24,22 @@ p oystercard.in_journey?
 # oystercard.touch_in("Makers Station")
 # expect error
 
-oystercard.touch_out
-p oystercard.touch_out
+# oystercard.touch_out
+# p oystercard.touch_out
 # expect "Boop"
-
-oystercard.touch_out
+object = Object.new
+p oystercard.touch_out(object)
 # want to deduct fare
 
 oystercard.in_journey?
 p oystercard.in_journey?
 # expect false
 
-oystercard2 = Oystercard.new
-p oystercard2.touch_in
+# oystercard2 = Oystercard.new
+# p oystercard2.touch_in
 # expect FUCK OFF
+
+p oystercard.history
+
+p station1 = Station.new("London Bridge", "Zone1")
+p

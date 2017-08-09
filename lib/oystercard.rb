@@ -3,6 +3,7 @@ class Oystercard
   MAX_BAL = 90
   FARE = 2
   PENALTY_FARE = 10
+
   attr_reader :balance, :status, :entry_station, :history
 
   def initialize
