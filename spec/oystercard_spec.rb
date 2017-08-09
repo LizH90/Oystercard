@@ -25,11 +25,6 @@ describe Oystercard do
     expect { oystercard.top_up(91) }.to raise_error "Balance cannot exceed £90"
   end
 
-  it 'returns Beep when touching in' do
-    oystercard.top_up(10)
-    expect(oystercard.touch_in(station)).to eq "Beep"
-  end
-
   it 'recognises when it is in the midst of a voyage' do
     oystercard.top_up(10)
     oystercard.touch_in(station)
@@ -44,11 +39,14 @@ describe Oystercard do
 
   it "will let you touch out if you have touched in and runs deduct" do
     oystercard.top_up(50)
-    expect { oystercard.touch_out }.to change { oystercard.balance }.by(-2)
+    oystercard.touch_in(station)
+    expect { oystercard.touch_out(station) }.to change { oystercard.balance }.by(-2)
   end
 
   it "returns 'boop' when touching out" do
-    expect(oystercard.touch_out).to eq "Boop"
+    oystercard.top_up(50)
+    oystercard.touch_in(station)
+    expect(oystercard.touch_out(station)).to eq "Boop"
   end
 
   it 'returns error if balance < £1' do
@@ -60,5 +58,23 @@ describe Oystercard do
     oystercard.touch_in(station)
     expect(oystercard.entry_station).to eq station
   end
+
+  it 'initliazes with empty array' do
+    expect (oystercard.history).to eq []
+  end
+
+  it 'will store and entry station as a hash'  do
+    oystercard.top_up(10)
+    oystercard.touch_in(station)
+    expect(oystercard.history.last).to eq({:entry_stn => station})
+  end
+
+  it 'will store an exit station as a hash' do
+    oystercard.top_up(10)
+    oystercard.touch_in(station)
+    oystercard.touch_out(station)
+    expect(oystercard.history.last).to eq({:entry_stn => station, :exit_stn => station})
+  end
+
 
 end
